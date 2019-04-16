@@ -1,0 +1,21 @@
+html,body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div, dl, dt, dd, input,figure { margin: 0;padding: 0; }ress,cite,dfn,em,var, i {font-style:normal;}
+body {font-size: 16px; line-height: 1.5; font-family:'Microsoft Yahei','simsun','arial','tahoma';  color: #222; background: #eee; }
+table { border-collapse:collapse; border-spacing:0; }
+h1, h2, h3, h4, h5, h6, th { font-size: 100%; font-weight: normal; }
+button,input,select,textarea{font-size:100%;}
+fieldset,img{border:0;}
+ul, ol { list-style: none; }
+:focus{ outline:none;}
+.fl{ float: left; }
+.fr{float: right;}
+html { font-family:"微软雅黑";}
+body { -webkit-overflow-scrolling: touch; text-align:left;  max-height: 100%; }
+a, a:hover { text-decoration: none; outline: none  }
+li { list-style: none }
+img { border: none; max-width:100%; }
+input, select, textarea { border: none; outline: none; background: none }
+em,i { font-style: normal }
+h1, h2, h3, h4, h5, h6 { font-weight: normal }
+html, body, #app, main {width: 100%;height: 100%;}
+.clearfix{ clear: both; content: ""; display: block; overflow: hidden }
+.clear{clear: both;}

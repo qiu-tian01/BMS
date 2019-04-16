@@ -1,0 +1,39 @@
+#header{
+    width: 100%;
+    background: #030303;
+    position: fixed;
+    top: 0;
+}
+
+.header-left{
+    float: left;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.header-right{
+    float: lfet;
+    margin-left: 300px;
+    height: 50px;
+    line-height: 50px;
+}
+.header-right .exit{
+    float: right;   
+    margin-right: 100px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.header-right .exit i{
+    font-size: 22px;
+}
+.user-name{
+    float: right;
+    color: #fff;
+    margin-right: 20px;
+    cursor: pointer;
+}

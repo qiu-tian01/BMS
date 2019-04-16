@@ -1,0 +1,32 @@
+/**************************************************************
+ *@NAME : 邱添 
+ *@date: 2019-04-16 22:26:44
+ *@description: 
+**************************************************************/
+body,html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: #f0f0f0!important;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif!important;
+  }
+  #app {
+    /*font-family: 'Avenir', Helvetica, Arial, sans-serif , SegoeUI;*/
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    font-size: 14px;
+  }
+
+#AppInfo{
+    float: left;
+    margin-left: 300px;
+    padding-top: 70px;
+    padding-left: 30px;
+    padding-right: 800px;
+    overflow: auto;
+}

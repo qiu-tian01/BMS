@@ -1,0 +1,22 @@
+
+#not-found{
+    display: inline-block;
+    width: 100%; 
+    margin:0 auto;
+    text-align: center;
+    position:fixed;
+    top: 50px;
+    left: 100px;
+}
+#not-found img{
+    margin-top: 50px;
+}
+
+.go-home{
+    margin-top:20px;
+    font-size: 24px;
+    cursor: pointer;  
+}
+.go-home:hover{
+    color: #e23131;
+}

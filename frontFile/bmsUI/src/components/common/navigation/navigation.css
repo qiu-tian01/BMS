@@ -1,0 +1,16 @@
+#navigation{
+    width: 300px;
+    height: 100%;
+    background-color:#030303;
+    position: fixed;
+    float: left;
+    position: fixed;
+    top: 50px;
+    left: 0;
+}
+.el-menu-vertical-demo{
+    width: 300px;
+}
+.el-menu-vertical-demo:hover{
+    color: #000;
+}
