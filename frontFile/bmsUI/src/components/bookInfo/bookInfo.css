@@ -1,0 +1,19 @@
+#book-info{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.book-info-sreach{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.book-info-table{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}

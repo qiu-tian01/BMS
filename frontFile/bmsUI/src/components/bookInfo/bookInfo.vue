@@ -1,6 +1,14 @@
 <template>
-    <div id="book-Info">
-        ttt
+    <div id="book-info">
+        <div id="header">
+            <span>图书信息</span>
+        </div>
+        <div class="book-info-sreach">
+            <Sreach></Sreach>
+        </div>
+        <div class="book-info-table">
+            <Table></Table>
+        </div>
     </div>
 </template>
 

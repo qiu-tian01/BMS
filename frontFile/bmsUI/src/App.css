@@ -10,8 +10,6 @@ body,html{
 
 body{
     background-color: #f0f0f0!important;
-    overflow: hidden;
-    font-family: 'Lato', sans-serif!important;
   }
   #app {
     /*font-family: 'Avenir', Helvetica, Arial, sans-serif , SegoeUI;*/
@@ -23,10 +21,10 @@ body{
   }
 
 #AppInfo{
-    float: left;
     margin-left: 300px;
     padding-top: 70px;
     padding-left: 30px;
-    padding-right: 800px;
-    overflow: auto;
+    padding-right: 30px; 
+    margin-bottom: 30px;
+   margin-top: 20px;
 }

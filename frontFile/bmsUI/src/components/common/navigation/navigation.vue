@@ -10,27 +10,27 @@
                 text-color="#fff"
                 active-text-color="#409EFF"
                 background-color="#030303"
-                router="true"
+                router
                 >
                 <el-menu-item index="home">
-                    <i class="iconfont iconhome"></i>
-                    <span slot="title">首页</span>
+                    <i class="iconfont iconhome" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">首页</span>
                 </el-menu-item>
                 <el-menu-item index="bookInfo">
-                    <i class="iconfont iconbook"></i>
-                    <span slot="title">图书信息</span>
+                    <i class="iconfont iconbook" style="font-size:18px" ></i>
+                    <span slot="title" style="font-size:18px">图书信息</span>
                 </el-menu-item>
-                <el-menu-item index="3">
-                    <i class="iconfont iconbook1"></i>
-                    <span slot="title">图书管理</span>
+                <el-menu-item index="bookManagement">
+                    <i class="iconfont iconbook1" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">图书管理</span>
                 </el-menu-item>
-                <el-menu-item index="4">
-                    <i class="iconfont iconpen"></i>
-                    <span slot="title">借阅信息</span>
+                <el-menu-item index="borrowBooks">
+                    <i class="iconfont iconpen" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">借阅信息</span>
                 </el-menu-item>
-                <el-menu-item index="5">
-                    <i class="iconfont iconuser"></i>
-                    <span slot="title">人员管理</span>
+                <el-menu-item index="userManagement"> 
+                    <i class="iconfont iconuser" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">人员管理</span>
                 </el-menu-item>
                 </el-menu>
             </el-col>

@@ -8,10 +8,6 @@
       <Header></Header>
       <Navigation></Navigation>
       <div id="AppInfo">
-        <el-breadcrumb separator="/">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        </el-breadcrumb>
-        
         <router-view/>
       </div>
       
