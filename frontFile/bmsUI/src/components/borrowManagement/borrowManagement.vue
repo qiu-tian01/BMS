@@ -1,11 +1,11 @@
 <template>
-    <div id="user-management">
+    <div id="borrow-management">
         <div id="header">
-            <span>用户管理</span>
+            <span>借阅管理</span>
         </div>
         <div class="sreach-book">
             <el-input
-                placeholder="请输入名称"
+                placeholder="请输入图书名称"
                 v-model="sreachData"
                 style="width:300px">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
@@ -23,14 +23,14 @@
         >
             
             <el-table-column
-                prop="userName"
-                label="用户名称"
+                prop="name"
+                label="图书名称"
                 align="center"
             >
             </el-table-column>
             <el-table-column
-                prop="startDate"
-                label="创建时间"
+                prop="user"
+                label="借书用户"
                 align="center"
             >
             </el-table-column>
@@ -59,12 +59,10 @@
             <template slot-scope="scope">
                 <el-button
                 size="mini"
-                type="info"
-                @click="addblacklist(scope.$index, scope.row)">加入黑名单</el-button>  
-                <el-button
-                size="mini"
-                type="danger"
-                @click="logoffUser(scope.$index, scope.row)">注销用户</el-button>  
+                type="primary"
+                @click="handleRemind(scope.$index, scope.row)">提醒用户</el-button>
+               
+                
             </template>
             </el-table-column>
         </el-table>
@@ -83,8 +81,8 @@
     </div>
 </template>
 
-<script src="./userManagement.js"></script>
+<script src="./borrowManagement.js"></script>
 
 <style scoped>
-    @import "./userManagement.css";
+    @import "./borrowManagement.css";
 </style>

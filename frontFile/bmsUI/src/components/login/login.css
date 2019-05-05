@@ -1,0 +1,95 @@
+#login{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #ffffff;
+}
+.login-content{
+    position: relative;
+}
+.status{
+    width: 400px;
+    height: 40px;
+    background: #000;
+    opacity: 0.9;
+    position: absolute;
+    top: -40px;
+    left: 0px;
+}
+.status-list{
+    width:200px;
+    height: 100%;
+    line-height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.login{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+.bk-lg-1{
+    background: url('../../assets/img/login1.jpg')no-repeat;
+}
+.bk-lg-2{
+    background: url('../../assets/img/login2.jpg')no-repeat;
+}
+.login-content{
+    width: 600px;
+    height: 400px;
+    background: #000;
+    opacity: 0.6;
+    margin: 0 auto;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px;
+}
+.login-content h1{
+    font-size: 30px;
+    margin-top: 5px;
+}
+#login .el-form-item__label{
+    color: #ffffff;
+    font-size: 16px;
+}
+#login .el-form-item__content{
+    margin-left: 0!important;
+    filter:Alpha(opacity=100);
+}{}
+#login .el-button{
+    opacity: 1;
+    margin-left: 20px;
+    width: 260px;
+}
+.active{
+    color: #05aee9;
+    border-bottom: 1px solid #05aee9;
+}
+.form-item{
+    position: relative;
+}
+.remind{
+    position: absolute;
+    left: 100px;
+}
+.remind1{
+    position: absolute;
+    top:58px;
+    left: 100px;
+}
+.remind2{
+    position: absolute;
+    right: 40px;
+}
+.goLogin{
+    position:absolute;
+    right:31px;
+    top:-36px;
+    color:#05aee9;
+    cursor: pointer;
+}

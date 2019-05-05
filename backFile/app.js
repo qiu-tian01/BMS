@@ -4,8 +4,10 @@ var path = require('path');//路径
 var cookieParser = require('cookie-parser');//解析cookie
 var logger = require('morgan');
 
+//路由工具
 var indexRouter = require('./routes/index');//路由工具
-var usersRouter = require('./routes/users');
+var bookRouter = require('./routes/books');
+
 //主应用程序
 var app = express();
 
@@ -24,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //启动路由工具
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/books',bookRouter)
 
 // catch 404 and forward to error handler
 // 处理404

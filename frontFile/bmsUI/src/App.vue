@@ -8,7 +8,9 @@
       <Header></Header>
       <Navigation></Navigation>
       <div id="AppInfo">
-        <router-view/>
+        <transition name="fade" mode="out-in">
+          <router-view/>
+        </transition>
       </div>
       
       

@@ -1,7 +1,7 @@
 <template>
     <div id="sreach">
         <el-input
-                placeholder="请输入查找内容"
+                placeholder="请输入图书名称"
                 v-model="sreachData"
                 style="width:300px">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
@@ -14,5 +14,7 @@
 <script src="./sreach.js"></script>
 
 <style scoped>
-
+.input-with-select .el-input-group__prepend {
+    background-color: #fff;
+  }
 </style>

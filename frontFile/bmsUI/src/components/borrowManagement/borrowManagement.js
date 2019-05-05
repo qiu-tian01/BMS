@@ -48,40 +48,12 @@ export default {
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
         },
-        addblacklist (index,row) {
-            this.$confirm('是否加入黑名单?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-              }).then(() => {
-                this.$notify({
-                  type: 'success',
-                  message: '操作成功!'
-                });
-              }).catch(() => {
-                this.$notify({
-                  type: 'info',
-                  message: '已取消'
-                });          
-              });
-        },
-        logoffUser (index,row) {
-            this.$confirm('是否注销此用户?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning'
-              }).then(() => {
-                this.$notify({
-                  type: 'success',
-                  message: '操作成功!'
-                });
-              }).catch(() => {
-                this.$notify({
-                  type: 'info',
-                  message: '已取消'
-                });          
-              });
+        handleRemind () {
+            this.$notify({
+                title: '成功',
+                message: '提醒用户成功',
+                type: 'success'
+            });
         }
-
     },
 }

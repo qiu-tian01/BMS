@@ -2,7 +2,7 @@ export default {
     data() {
         return {
             isShowReset :false,//判断重置按钮出现
-            sreachData : ''
+            sreachData : '',
         }
     },
 

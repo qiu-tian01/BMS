@@ -18,6 +18,7 @@ body{
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
     font-size: 14px;
+    overflow: hidden;
   }
 
 #AppInfo{
@@ -25,6 +26,21 @@ body{
     padding-top: 70px;
     padding-left: 30px;
     padding-right: 30px; 
-    margin-bottom: 30px;
-   margin-top: 20px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    
+}
+
+.fade-enter {
+  opacity:0;
+}
+.fade-leave{
+  opacity:1;
+}
+.fade-enter-active{
+  transition:opacity .3s;
+}
+.fade-leave-active{
+  opacity:0;
+  transition:opacity .3s;
 }

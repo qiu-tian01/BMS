@@ -28,8 +28,16 @@
                     <i class="iconfont iconpen" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">借阅信息</span>
                 </el-menu-item>
-                <el-menu-item index="userManagement"> 
+                <el-menu-item index="borrowManagement">
+                    <i class="iconfont icontianchongxing-" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">借阅管理</span>
+                </el-menu-item>
+                <el-menu-item index="userInfo"> 
                     <i class="iconfont iconuser" style="font-size:18px"></i>
+                    <span slot="title" style="font-size:18px">个人中心</span>
+                </el-menu-item>
+                <el-menu-item index="userManagement"> 
+                    <i class="iconfont iconrenyuanguanli" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">人员管理</span>
                 </el-menu-item>
                 </el-menu>
