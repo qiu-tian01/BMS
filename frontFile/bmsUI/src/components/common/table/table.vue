@@ -15,22 +15,19 @@
             >
             </el-table-column>
             <el-table-column
-                prop="img"
-                label="图书图片"
+                prop="author"
+                label="作者"
                 align="center"
             >
-            <template slot-scope="scope">
-                <img  :src="scope.row.imgPath" alt="" style="width: 60px;height: 80px">
-            </template>
             </el-table-column>
             <el-table-column
-                prop="name"
+                prop="bookName"
                 label="图书名称"
                 align="center"
             >
             </el-table-column>
             <el-table-column
-                prop="magazine"
+                prop="category"
                 label="图书类别"
                 align="center"
             >
@@ -42,7 +39,7 @@
             >
             </el-table-column>
             <el-table-column
-                prop="number"
+                prop="bookNumber"
                 label="图书数量"
                 align="center"
             >
@@ -76,8 +73,11 @@
             </el-pagination>
         </div>
         <!-- 编辑信息 -->
-            <el-dialog title="添加书籍" :visible.sync="dialogFormVisible">
+            <el-dialog title="编辑书籍" :visible.sync="dialogFormVisible">
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                     <el-form-item label="书籍编号" prop="id">
+                        <el-input v-model.trim="ruleForm.id" clearable></el-input>
+                    </el-form-item>
                     <el-form-item label="书籍名称" prop="name">
                         <el-input v-model.trim="ruleForm.name" clearable></el-input>
                     </el-form-item>
@@ -101,19 +101,8 @@
                     <el-form-item label="书籍简介" prop="desc">
                         <el-input type="textarea" v-model.trim="ruleForm.desc" clearable></el-input>
                     </el-form-item>
-                    <el-form-item label="书籍图片" prop="img">
-                    <el-upload
-                            class="avatar-uploader"
-                            action="https://jsonplaceholder.typicode.com/posts/"
-                            :show-file-list="false"
-                            :on-success="handleAvatarSuccess"
-                            :before-upload="beforeAvatarUpload">
-                            <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                        </el-upload>
-                    </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">添加书籍</el-button>
+                        <el-button type="primary" @click="submitEditForm('ruleForm')">提交编辑</el-button>
                         <el-button @click="resetForm('ruleForm')">重置</el-button>
                     </el-form-item>
                 </el-form>

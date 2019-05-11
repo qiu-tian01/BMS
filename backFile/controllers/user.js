@@ -1,42 +1,42 @@
 const { handleData } = require('../util')
-const book_model = require('../models/books')
+const user_model = require('../models/user')
 
 // 获取图书列表
 const listAll = async (req, res) => {
-    // res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.listAll()
+    res.set('content-type', 'application/json; charset=utf8')
+    let _data = await user_model.listAll()
     handleData(_data, res, 'book')
 }
 // 返回部分数据
 const list = async (req, res) => {
     res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.list(req.query)
-    handleData(_data, res, 'book')
+    let _data = await user_model.list(req.query)
+    handleData(_data, res, 'user')
 }
 
 //添加书籍
 const add = async (req,res) => {
     res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.add(req.body)
-    handleData(_data, res, 'book')
+    let _data = await user_model.add(req.body)
+    handleData(_data, res, 'user')
 }
 //删除书籍
 const remove = async (req, res) => {
     res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.remove(req.query)
+    let _data = await user_model.remove(req.query)
     // 如果数据已经删除了，同时删除图片
-    handleData(_data, res, 'book')
+    handleData(_data, res, 'user')
 }
 const listone = async (req, res) => {
     res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.listone(req.query)
-    handleData(_data, res, 'book')
+    let _data = await user_model.listone(req.query)
+    handleData(_data, res, 'user')
 }
 const edit = async (req, res) => {
     res.set('content-type', 'application/json; charset=utf8')
-    let _data = await book_model.edit(req.body)
+    let _data = await user_model.edit(req.body)
     console.log("ok",req.body)
-    handleData(_data, res, 'book')
+    handleData(_data, res, 'user')
 }
 module.exports = {
     listAll,

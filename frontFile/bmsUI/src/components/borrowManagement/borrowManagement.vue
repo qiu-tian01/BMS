@@ -1,5 +1,5 @@
 <template>
-    <div id="borrow-management">
+    <div id="borrow-management" class="clearfix">
         <div id="header">
             <span>借阅管理</span>
         </div>
@@ -21,7 +21,12 @@
             stripe   
             highlight-current-row
         >
-            
+            <el-table-column
+                prop="id"
+                label="图书编号"
+                align="center"
+            >
+            </el-table-column>
             <el-table-column
                 prop="name"
                 label="图书名称"

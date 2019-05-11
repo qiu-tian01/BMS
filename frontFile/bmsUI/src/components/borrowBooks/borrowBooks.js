@@ -11,35 +11,35 @@ export default {
             tableData:
              [{
                 id : 1,
-                img: 'null',
+                author: 'null',
                 magazine : '教育',
                 name: 'javascript高级编程',
                 press : 'XX教育出版社',
                 number: '5'
               }, {
                 id : 2,
-                img: 'null',
+                author: 'null',
                 magazine : '教育',
                 name: 'javascript高级编程',
                 press : 'XX教育出版社',
                 number: '5'
               }, {
                 id : 3,
-                img: 'null',
+                author: 'null',
                 magazine : '教育',
                 name: 'javascript高级编程',
                 press : 'XX教育出版社',
                 number: '5'
               }, {
                 id : 4,
-                img: 'null',
+                author: 'null',
                 magazine : '教育',
                 name: 'javascript高级编程',
                 press : 'XX教育出版社',
                 number: '5'
               },{
                 id : 5,
-                img: 'null',
+                author: 'null',
                 magazine : '教育',
                 name: 'javascript高级编程',
                 press : 'XX教育出版社',

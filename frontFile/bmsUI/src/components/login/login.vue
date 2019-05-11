@@ -36,7 +36,7 @@
                              <!-- <p class="remind2" style="color:red">用户名不能超过10位哟！</p> -->
                         </el-form-item>
                         <el-form-item label="密码" prop="pass" style="margin-top:40px">
-                            <el-input type="password" style="width:480px" v-model="registeForm.pass" autocomplete="off"></el-input>
+                            <el-input type="password" style="width:480px" v-model="registeForm.password" autocomplete="off"></el-input>
                             <p class="remind" style="color:red">密码不能为空</p>
                             <!-- <p class="remind2" style="color:red">密码不能超过12位哟！</p> -->
                         </el-form-item>

@@ -1,5 +1,5 @@
 <template>
-    <div id="user-management">
+    <div id="user-management" class="clearfix">
         <div id="header">
             <span>用户管理</span>
         </div>
@@ -30,25 +30,19 @@
             </el-table-column>
             <el-table-column
                 prop="startDate"
-                label="创建时间"
+                label="注册时间"
                 align="center"
             >
             </el-table-column>
-            <el-table-column
-                prop="startDate"
-                label="借书时间"
+             <el-table-column
+                prop="phone"
+                label="手机号"
                 align="center"
             >
             </el-table-column>
-            <el-table-column
-                prop="endDate"
-                label="归还时间"
-                align="center"
-            >
-            </el-table-column>
-            <el-table-column
-                prop="remainingDate"
-                label="剩余时间"
+             <el-table-column
+                prop="email"
+                label="Email"
                 align="center"
             >
             </el-table-column>
@@ -59,8 +53,8 @@
             <template slot-scope="scope">
                 <el-button
                 size="mini"
-                type="info"
-                @click="addblacklist(scope.$index, scope.row)">加入黑名单</el-button>  
+                type="primary"
+                @click="addblacklist(scope.$index, scope.row)">提升管理员</el-button>  
                 <el-button
                 size="mini"
                 type="danger"
@@ -68,7 +62,7 @@
             </template>
             </el-table-column>
         </el-table>
-        <div class="pagination">
+        <div class="pagination fr">
             <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"

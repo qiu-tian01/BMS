@@ -1,5 +1,6 @@
 import Sreach from '@components/common/sreach/sreach.vue'
 import Table from '@components/common/table/table.vue'
+var _this
 
 export default {
     components : {Sreach,Table},
@@ -8,51 +9,27 @@ export default {
             dialogVisible : false,//详情模态框
             currentPage: 1, //分页数 
             bookIntrofuction : '',
-            tableData:
-             [{
-                id : 1,
-                img: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5',
-                introduction : '这是一本书'
-              }, {
-                id : 2,
-                img: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5',
-                introduction : '这是一本书'
-              }, {
-                id : 3,
-                img: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5',
-                introduction : '这是一本书'
-              }, {
-                id : 4,
-                img: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5',
-                introduction : '这是一本书'
-              },{
-                id : 5,
-                img: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5',
-                introduction : '这是一本书'
-              }]
+            tableData:[]
         }
     },
+    mounted() {
+      _this =this;
+      this.getAllList(); 
+    },
     methods: {
+        //获取列表
+        getAllList () {
+          console.log('ok')
+          this.$axios.get('/api/books/list')
+            .then((res)=>{
+              console.log(res.data.data.items)
+              this.tableData = res.data.data.items;
+            })
+            .catch(function(err){
+              console.log(err)
+            })
+        },
+
         handleEdit(index, row) {
             console.log(index, row);
         },

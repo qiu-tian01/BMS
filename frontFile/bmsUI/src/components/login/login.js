@@ -1,9 +1,9 @@
 export default {
-    
     data() {
         return {
             status: '1',
             loginOrRegiste : 'login',
+            
             isLogin : true,
             title: {
                 login : '登录',
@@ -15,9 +15,10 @@ export default {
                 password : ''
             },
             registeForm: {
-              pass: '',
-              checkPass: '',
-              name: ''
+              password: '',
+              name: '',
+              checkPass: '',//检查代码
+              level : ''
             },
         }
     },
@@ -33,7 +34,11 @@ export default {
             this.status = s    
         },
         submitForm() {
-          
+            let formData = JSON.parse(JSON.stringify(this.registeForm));
+            this.$axios.post('/api/user/add',formData)
+                .then((res)=>{
+                    console.log(res);
+                })
         },
         resetForm() {
           
@@ -43,7 +48,12 @@ export default {
           this.isLogin = true;
         },
         loginUserName () {
+            
             console.log('ok')
+        },
+        loginUserPwd () {
+
         }
+
     },
 }

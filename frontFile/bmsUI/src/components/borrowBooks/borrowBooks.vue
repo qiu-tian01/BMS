@@ -29,13 +29,10 @@
             >
             </el-table-column>
             <el-table-column
-                prop="img"
-                label="图书图片"
+                prop="author"
+                label="作者"
                 align="center"
             >
-            <template slot-scope="scope">
-                <img  :src="scope.row.imgPath" alt="" style="width: 60px;height: 80px">
-            </template>
             </el-table-column>
             <el-table-column
                 prop="name"

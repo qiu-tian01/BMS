@@ -10,24 +10,26 @@ export default {
             [{
                id : 1,
                name: 'javascript高级编程',
-               user : 'qqq',
-               startDate: '2019/01/01',
-               endDate : '2019/01/02',
-               remainingDate: '1'
+               userName : 'qqq',
+               phone : '12345',
+               email : '222@qq.com',
+               startDate : '2019-05-04'
              }, {
                id : 2,
                name: 'javascript高级编程',
-               user : 'qqq',
-               startDate: '2019/01/01',
-               endDate : '2019/01/02',
-               remainingDate: '1'
+               userName : 'qqq',
+               phone : '12345',
+               email : '222@qq.com',
+               startDate : '2019-05-04'
+
              }, {
                id : 3,
                name: 'javascript高级编程',
-               user : 'qqq',
-               startDate: '2019/01/01',
-               endDate : '2019/01/02',
-               remainingDate: '1'
+               userName : 'qqq',
+               phone : '12345',
+               email : '222@qq.com',
+               startDate : '2019-05-04'
+
              }]
         }
     },

@@ -1,82 +1,177 @@
 import Sreach from '@components/common/sreach/sreach.vue'
 import Table from '@components/common/table/table.vue'
 
+var _this
+
 export default {
     components : {Sreach,Table},
     data() {
         return {
+            searchValue : '',
             imageUrl: '',//图片上传
             dialogFormVisible: false,//模态框开关
+            dialogFormEditVisible: false,//编辑模态框开关
+            currentPage: 1, //分页数 
+            dialogVisible: false, //删除提示框
+            formLabelWidth: '120px',
+            tableData : [],
             ruleForm: {
-                name: '', //名称
+
+                id : '',//书籍编号
+                bookName: '', //名称
                 category: '',//类别
-                desc: '',//描述
-                publishingHouse : '',//出版社
-                number : 0,//数量
-                img : ''
+                author : '',
+                introduction: '',//描述
+                press : '',//出版社
+                bookNumber : 1,//数量
               },
               rules: {
-                name: [
+                id: [
+                  { required: true, message: '请输入书籍编号', trigger: 'blue' }
+                ],
+                bookName: [
                   { required: true, message: '请输入图书名字', trigger: 'blur' },
-                  { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+                ],
+                author: [
+                  { required: true, message: '请输入作者名称', trigger: 'blur' },
                 ],
                 category: [
                   { required: true, message: '请选择书籍类别', trigger: 'change' }
                 ],
-                publishingHouse: [
+                press: [
                   { required: true, message: '请输入出版社信息', trigger: 'blur' }
                 ],
-                number: [
+                bookNumber: [
                   { required: true, message: '数量不能为空', trigger: 'blur' },
                   { type: 'number', message: '年龄必须为数字值'}
                 ],
-                desc: [
+                introduction: [
                   { required: true, message: '请填写活动形式', trigger: 'blur' }
                 ],
-                img: [
-                  { required: true, message: '请上传一张书籍图片', trigger: 'blur' }
-                ]
-        
             }
         }
     },
+    mounted() {
+        _this =this
+        this.getAllBookInfo();
+    },
+
     methods: {
-        handleAvatarSuccess(res, file) {
-            this.imageUrl = URL.createObjectURL(file.raw);
-          },
+      handleAvatarSuccess(res, file) {
+        this.imageUrl = URL.createObjectURL(file.raw);
+      },
 
           
-          submitForm(formName) {//提交表单
-            this.$refs[formName].validate((valid) => {
-              if (valid) {
-                alert('submit!');
-              } else {
-                console.log('error submit!!');
-                return false;
-              }
-            });
-          },
-          resetForm(formName) {//重置
-            this.$refs[formName].resetFields();
-          },
-          //上传图片
-          handleAvatarSuccess(res, file) {
-            this.imageUrl = URL.createObjectURL(file.raw);
-          },
-          beforeAvatarUpload(file) {
-            const isJPG = file.type === 'image/jpeg';
-            const isPng = file.type === 'image/png';
-            console.log(file.type)
-            const isLt2M = file.size / 1024 / 1024 < 2;
-    
-            if (!(isJPG&&isPng)) {
-              this.$message.error('上传头像图片只能是 JPG和 PNG 格式!');
-            }
-            if (!isLt2M) {
-              this.$message.error('上传头像图片大小不能超过 2MB!');
-            }
-            return isJPG && isLt2M;
+      submitForm(formName) {//提交表单
+        this.$refs[formName].validate((valid) => {
+          let formData = JSON.parse(JSON.stringify(this.ruleForm));
+          if (valid) {
+            this.$axios.post('/api/books/add',formData)
+            .then((res)=>{
+               this.dialogFormVisible = false;
+               this.$notify({
+                title: '成功',
+                message: '添加成功',
+                type: 'success'
+              });
+              this.getAllBookInfo();
+            })
+            .catch((err)=>{
+              console.log(err)
+            })
+          } else {
+            return false;
           }
-          //上传图片结束
+        }); 
+      },
+      getAllBookInfo () {//获取信息
+        this.$axios.get('/api/books/list')
+          .then((res)=>{
+            this.tableData = res.data.data.items;
+          })
+      },
+
+      resetForm(formName) { // 重置
+        this.$refs[formName].resetFields();
+      },
+      handleEdit(index, row) { // 编辑图书信息
+        this.ruleForm.id = row.id;
+        this.ruleForm._id = row._id;
+        this.ruleForm.bookName = row.bookName;
+        this.ruleForm.author = row.author;
+        this.ruleForm.category = row.category;
+        this.ruleForm.press = row.press;
+        this.ruleForm.bookNumber = row.bookNumber;
+        this.ruleForm.introduction = row.introduction;
+        this.dialogFormEditVisible = true;
+        
+      },
+      handleDelete(index, row) {
+        console.log(row)
+        //  this.dialogVisible = true;
+         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning'
+          }).then(() => {
+            this.$axios.get('/api/books/delate',{
+              params: {  
+                id: row._id,
+              }           
+            }).then((res)=>{
+              this.$notify({
+                title: '成功',
+                message: '删除成功',
+                type: 'success'
+              });
+              this.getAllBookInfo ()
+            }).catch((err)=>{
+              console.log(err)
+            })
+            
+          }).catch(() => {
+            this.$notify({
+              type: 'info',
+              message: '已取消删除'
+            });          
+          });
+      },
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+          console.log(`当前页: ${val}`);
+      },
+      resetForm(formName) { // 重置
+        this.$refs[formName].resetFields();
+      },
+      getSeachList (val) {
+        this.tableData = val;
+      },
+      submitEditForm (formName) {
+        console.log(formName)
+        this.$refs[formName].validate((valid) => {
+          let formData = JSON.parse(JSON.stringify(this.ruleForm));
+          if (valid) {
+            this.$axios.post('/api/books/edit',formData)
+          .then((res)=>{
+            this.getAllBookInfo()
+            this.dialogFormEditVisible = false
+            this.$notify({
+              title: '成功',
+              message: '编辑成功',
+              type: 'success'
+            });
+          })
+            .catch((err)=>{
+              console.log(err)
+            })
+          } else {
+            return false;
+          }
+        }); 
+      }
     },
+
+    
 }
