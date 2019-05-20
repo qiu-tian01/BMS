@@ -11,6 +11,8 @@ var borrowInfo = mongoose.model('borrowInfos',new mongoose.Schema({
     remainTime: String,//剩余时间
     createTime: String,//添加时间
     formatTime: String,//转化后的时间
+    isReturn : Boolean,//是否还书
+    isRemind : Boolean
 })) 
 
 const listAll = () => {
@@ -76,9 +78,45 @@ const add = (body) => {
         })
 }
 
+// 更新职位信息， 确认是否重新发布，如果重新发布，更改创建时间
+const edit = (body) => {
+    if ( body ) {
+        let _timestamp = Date.now()
+        let moment = Moment(_timestamp)
+        body.createTime = _timestamp
+        body.formatTime = moment.format("YYYY-MM-DD, hh:mm")
+    }
+    return borrowInfo.updateOne({ _id: body._id }, { ...body }).then((results) => {//第一个是查询条件，第二个参数是更改 
+        return results
+    }).catch((err) => {
+        return false
+    }) 
+}
+// 根据id返回某一条数据
+const listone = ({ _id }) => {
+    return borrowInfo.findById(_id).then((results) => {
+        return results
+    }).catch((err) => {
+        return false
+    }) 
+}
+// 删除职位的model
+const remove = async( { _id } ) => {
+    // 删除数据库中的某一条数据
+    let _row = await listone({ _id })
+    return borrowInfo.deleteOne({ _id: _id }).then((results) => {
+        results.deleteId = _id
+        return results
+    }).catch((err) => {
+        // fs.appendFileSync('./logs/logs.txt', Moment().format("YYYY-MM-DD, hh:mm") + '' +JSON.stringify(err))
+        return false
+    })
+}
 
 module.exports = {
     listAll,
     list,
-    add
+    add,
+    edit,
+    remove
 }

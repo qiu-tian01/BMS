@@ -1,7 +1,7 @@
 <template>
     <div id="sreach">
         <el-input
-                placeholder="请输入图书名称"
+                placeholder="请输入搜索内容"
                 v-model="newValue"
                 style="width:300px">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>

@@ -13,7 +13,7 @@
                     <i class="iconfont iconpen" style="font-size:26px"></i>
                     <span>借阅信息</span>
                 </router-link>
-                <router-link tag="div" :to = "{name : 'userManagement'}" class="home-book-user-header fl bk-user">
+                <router-link tag="div" :to = "{name : 'userInfo'}" class="home-book-user-header fl bk-user">
                     <i class="iconfont iconuser" style="font-size:26px"></i>
                     <span>个人信息</span>
                 </router-link>

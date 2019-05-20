@@ -83,13 +83,13 @@
                     </el-form-item>
                     <el-form-item label="书籍类别" prop="category">
                         <el-select v-model="ruleForm.category" placeholder="请选择书籍区域">
-                            <el-option label="教育" value="education"></el-option>
-                            <el-option label="文学" value="literature "></el-option>
-                            <el-option label="幼儿" value="baay"></el-option>
-                            <el-option label="历史" value="history"></el-option>
-                            <el-option label="青春" value="young"></el-option>
-                            <el-option label="恐怖" value="terror"></el-option>
-                            <el-option label="玄幻" value="fantasy"></el-option>
+                            <el-option label="教育" value="教育"></el-option>
+                            <el-option label="文学" value="文学"></el-option>
+                            <el-option label="幼儿" value="幼儿"></el-option>
+                            <el-option label="历史" value="历史"></el-option>
+                            <el-option label="青春" value="青春"></el-option>
+                            <el-option label="恐怖" value="恐怖"></el-option>
+                            <el-option label="玄幻" value="玄幻"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="出版社" prop="publishingHouse">

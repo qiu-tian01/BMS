@@ -6,6 +6,7 @@ const PATH = require('path') // 时间格式化
 var UserInfo = mongoose.model('userInfos',new mongoose.Schema({
     userName : String,//用户名
     password : String,//密码
+    checkPwd : String,//检查密码
     phone : Number,//手机号
     email : String,//Email
     createTime: String,//添加时间
@@ -28,9 +29,7 @@ const list = async ({ pageNo = 1, pageSize = 5, search = ''}) => {
     let reg = new RegExp(search, 'g')
     let _query = { // 匹配各个字段值只要有一个字段含有关键字
         $or: [
-            { userName: reg },   
-            { phone: reg },   
-            { email: reg },  
+            { userName: reg }
         ]
     }// 查询的约定条件
     // limit // 取几条
@@ -57,9 +56,9 @@ const list = async ({ pageNo = 1, pageSize = 5, search = ''}) => {
 }
 
 // 根据id返回某一条数据
-const listone = ({ id }) => {
-    return UserInfo.findById(id).then((results) => {
-        return results
+const listone = async ( userName ) => {
+    return UserInfo.find(userName).then((results) => {
+        return results;
     }).catch((err) => {
         return false
     }) 
@@ -87,7 +86,7 @@ const add = (body) => {
 const remove = async( { id } ) => {
     // 删除数据库中的某一条数据
     let _row = await listone({ id })
-    return UserInfo.deleteOne({ _id: id }).then((results) => {
+    return UserInfo.deleteOne({ id: id }).then((results) => {
         results.deleteId = id
         return results
     }).catch((err) => {
@@ -98,7 +97,8 @@ const remove = async( { id } ) => {
 
 // 更新职位信息， 确认是否重新发布，如果重新发布，更改创建时间
 const edit = (body) => {
-    return UserInfo.updateOne({ _id: body.id }, { ...body }).then((results) => {//第一个是查询条件，第二个参数是更改 
+    console.log(body)
+    return UserInfo.updateOne({ _id: body._id}, { ...body }).then((results) => {//第一个是查询条件，第二个参数是更改 
         return results
     }).catch((err) => {
         return false

@@ -5,7 +5,7 @@
         </div>
         <div class="sreach-book">
             <el-input
-                placeholder="请输入名称"
+                placeholder="请输入搜索内容"
                 v-model="sreachData"
                 style="width:300px">
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
@@ -15,7 +15,7 @@
         </div>
         <div class="borrow-book-table">
             <el-table
-            :data="tableData"
+            :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)" 
             style="width: 100%"
             :header-cell-style="{background:'#66b1ff',color:'#fff'}" 
             stripe   
@@ -29,7 +29,7 @@
             >
             </el-table-column>
             <el-table-column
-                prop="startDate"
+                prop="formatTime"
                 label="注册时间"
                 align="center"
             >
@@ -52,13 +52,19 @@
             >
             <template slot-scope="scope">
                 <el-button
+                v-show="scope.row.level == 2"
                 size="mini"
                 type="primary"
                 @click="addblacklist(scope.$index, scope.row)">提升管理员</el-button>  
                 <el-button
+                v-show="scope.row.level == 1"
+                size="mini"
+                type="primary"
+                @click="changeAdmin(scope.$index, scope.row)">设置为用户</el-button> 
+                <el-button
                 size="mini"
                 type="danger"
-                @click="logoffUser(scope.$index, scope.row)">注销用户</el-button>  
+                @click="handleDelete(scope.$index, scope.row)">注销用户</el-button>  
             </template>
             </el-table-column>
         </el-table>
@@ -68,10 +74,10 @@
                 @current-change="handleCurrentChange"
                 :current-page.sync="currentPage"
                 background
-                :page-size="5"
+                :page-size="pagesize"  
                 layout="total, prev, pager, next"
-                :total="tableData.length">
-            </el-pagination>
+                :total="tableData.length"
+            ></el-pagination>
         </div>
         </div>
     </div>

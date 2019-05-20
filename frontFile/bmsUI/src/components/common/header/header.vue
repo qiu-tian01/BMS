@@ -4,12 +4,14 @@
             <span>BMS</span> 
         </div>
         <div class="header-right">
-            <router-link to="/login" tag="p" class="exit">
+            <router-link to="/login" tag="p" class="exit" @click="cahngeIsLogin">
                 <i class="iconfont iconexit"></i>
             </router-link>
             <div class="user-name">
-                <span></span>
-                <span>请登录</span>
+                <span>欢迎</span>
+                <span v-if="isAdmin == true">管理员</span>
+                <span v-if="isAdmin == false">用户</span>
+                <span>{{userName}}</span>
             </div>
         </div>
     </div>

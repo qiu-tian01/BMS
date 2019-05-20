@@ -20,3 +20,33 @@
 .pagination{
     float: right;
 }
+.commentList{
+    width: 100%;
+    position: relative;
+    background-color: #eeeeee;
+    margin-bottom: 5px;
+}
+.user{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 100px;
+}
+.user  span {
+    font-size:18px;
+    padding-top: 20px;
+}
+.commentInfo{
+    margin: 15px 5px;
+}
+.commentInfo span{
+    font-size: 16px;
+}
+.time{
+   float: right;
+   margin-right: 15px;
+}
+.delate-comment{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}

@@ -3,7 +3,7 @@
         <el-row class="tac">
             <el-col :span="12">
                 <el-menu
-                default-active="home"
+                :default-active="path"
                 class="el-menu-vertical-demo"
                 @open="handleOpen"
                 @close="handleClose"
@@ -12,31 +12,31 @@
                 background-color="#030303"
                 router
                 >
-                <el-menu-item index="home">
+                <el-menu-item index="/home">
                     <i class="iconfont iconhome" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">首页</span>
                 </el-menu-item>
-                <el-menu-item index="bookInfo">
+                <el-menu-item index="/bookInfo">
                     <i class="iconfont iconbook" style="font-size:18px" ></i>
                     <span slot="title" style="font-size:18px">图书信息</span>
                 </el-menu-item>
-                <el-menu-item index="bookManagement">
+                <el-menu-item index="/bookManagement" v-show="isAdmin === true">
                     <i class="iconfont iconbook1" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">图书管理</span>
                 </el-menu-item>
-                <el-menu-item index="borrowBooks">
+                <el-menu-item index="/borrowBooks">
                     <i class="iconfont iconpen" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">借阅信息</span>
                 </el-menu-item>
-                <el-menu-item index="borrowManagement">
+                <el-menu-item index="/borrowManagement" v-show="isAdmin === true">
                     <i class="iconfont icontianchongxing-" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">借阅管理</span>
                 </el-menu-item>
-                <el-menu-item index="userInfo"> 
+                <el-menu-item index="/userInfo"> 
                     <i class="iconfont iconuser" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">个人中心</span>
                 </el-menu-item>
-                <el-menu-item index="userManagement"> 
+                <el-menu-item index="/userManagement" v-show="isAdmin === true"> 
                     <i class="iconfont iconrenyuanguanli" style="font-size:18px"></i>
                     <span slot="title" style="font-size:18px">人员管理</span>
                 </el-menu-item>

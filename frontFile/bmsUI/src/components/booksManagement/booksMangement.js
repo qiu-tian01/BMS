@@ -12,6 +12,7 @@ export default {
             dialogFormVisible: false,//模态框开关
             dialogFormEditVisible: false,//编辑模态框开关
             currentPage: 1, //分页数 
+            pagesize:10,    //    每页的数据
             dialogVisible: false, //删除提示框
             formLabelWidth: '120px',
             tableData : [],
@@ -85,9 +86,9 @@ export default {
         }); 
       },
       getAllBookInfo () {//获取信息
-        this.$axios.get('/api/books/list')
+        this.$axios.get('/api/books/listAll')
           .then((res)=>{
-            this.tableData = res.data.data.items;
+            this.tableData = res.data.data;
           })
       },
 
@@ -137,10 +138,11 @@ export default {
           });
       },
       handleSizeChange(val) {
-        console.log(`每页 ${val} 条`);
+        this.pagesize = val;
+        this.currentPage=1
       },
       handleCurrentChange(val) {
-          console.log(`当前页: ${val}`);
+        this.currentPage = val;
       },
       resetForm(formName) { // 重置
         this.$refs[formName].resetFields();

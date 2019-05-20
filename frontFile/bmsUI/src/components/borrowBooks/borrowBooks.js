@@ -1,86 +1,117 @@
-
+import Sreach from '@components/common/sreach/sreach.vue'
 export default {
-
+  components : {Sreach},
     data() {
         return {
+            searchValue :'',
             data: '',
             dialogFormVisible : false,
             currentPage: 1, //分页数 
+            pagesize:10,    //    每页的数据
             isShowReset :false,//判断重置按钮出现
             sreachData : '',
-            tableData:
-             [{
-                id : 1,
-                author: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5'
-              }, {
-                id : 2,
-                author: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5'
-              }, {
-                id : 3,
-                author: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5'
-              }, {
-                id : 4,
-                author: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5'
-              },{
-                id : 5,
-                author: 'null',
-                magazine : '教育',
-                name: 'javascript高级编程',
-                press : 'XX教育出版社',
-                number: '5'
-              }],
+            tableData:[],
               borrowBokkInfo : {
                 user: '',
                 bookName :'',
-                startData : '',
-                endData : ''
+                startTime : '',
+                endTime : '',
+                remainTime : '',
+                isReturn :false,
+                isRemind : false
+              },
+              collectInfo : {
+                user : '',
+                bookName : "",
+                category : "",
+                press : "",
+                author : "",
+                
               }
         }
     },
+    mounted() {
+      this.getAllList()
+    },
     methods: {
-        submitSreach (){//提交搜索
-            if(this.sreachData != ''){
-                this.isShowReset = true
-            }
-        },
         resetInput () {//重置按钮
             this.sreachData = ''
             this.isShowReset = false
             
         },
+        getAllList () {
+          this.$axios.get('/api/books/listAll')
+            .then((res)=>{
+              this.tableData = res.data.data;
+            })
+            .catch(function(err){
+              console.log(err)
+            })
+        },
+          getSTime(val) {//设置时间
+            let d=new Date(val);//这个sTime是在data中声明的，也就是v-model绑定的值
+            this.borrowBokkInfo.startTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+          },
+          getETime (val) {//设置借宿时间
+            let d=new Date(val);//这个sTime是在data中声明的，也就是v-model绑定的值
+            this.borrowBokkInfo.endTime = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+          },
+          submitBorrowInfo() {//借阅图书
+            this.borrowBokkInfo.user = this.$store.state.User.userName;
+            //计算剩余时间
+            let time1 = new Date(this.borrowBokkInfo.startTime)
+            let time2 = new Date(this.borrowBokkInfo.endTime)
+            let s1 = time1.getTime(),s2 = time2.getTime();
+            let total = (s2 - s1)/1000;
+            let day = parseInt(total / (24*60*60));//计算整数天数
+            this.borrowBokkInfo.remainTime = day;
+            let formData = JSON.parse(JSON.stringify(this.borrowBokkInfo));
+             this.$axios.post('/api/borrows/add',formData)
+                .then((res)=>{
+                  this.$notify({
+                    title: '成功',
+                    message: '借阅成功',
+                    type: 'success'
+                  });
+                  this.dialogFormVisible = false
+                }).catch((err)=>{
+                  console.log(err)
+                })
+           
+          },
+        getSeachList (val) {//搜索
+            this.tableData = val;
+        },
         handleSizeChange(val) {
-          console.log(`每页 ${val} 条`);
+          this.pagesize = val;
+          this.currentPage=1
         },
         handleCurrentChange(val) {
-            console.log(`当前页: ${val}`);
+          this.currentPage = val;
         },
         handleBorrowBook (index,row) {
-          console.log(row)
           this.dialogFormVisible = true;
-          this.borrowBokkInfo.bookName = row.name;
+          this.borrowBokkInfo.bookName = row.bookName;
         },
-        handleCollectBook () {
-          this.$notify({
-            title: '成功',
-            message: '收藏成功',
-            type: 'success'
-          });
+        handleCollectBook (index,row) {
+          this.collectInfo.user = this.$store.state.User.userName;
+          this.collectInfo.bookName = row.bookName;
+          this.collectInfo.category = row.category;
+          this.collectInfo.press = row.press;
+          this.collectInfo.author = row.author;
+          let formData = JSON.parse(JSON.stringify(this.collectInfo));
+          this.$axios.post('/api/collect/add',formData)
+            .then((res)=>{
+              console.log(res)
+              this.$notify({
+                title: '成功',
+                message: '收藏成功',
+                type: 'success'
+              });
+            }).catch((err)=>{
+              console.log(err)
+            })
+          
         }
     },
 }

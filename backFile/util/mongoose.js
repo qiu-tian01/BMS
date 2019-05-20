@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 
 // 连接数据库
+//useNewUrlParser: true 不加会报警告
 mongoose.connect('mongodb://localhost:27017/bms',{ useNewUrlParser: true });
 
 // 得到数据库连接句柄

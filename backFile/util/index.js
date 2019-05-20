@@ -11,7 +11,6 @@ const handleData = (data, res, template, callbacks = {}) => {
         response.call(res, { template, code: 500, data: '发生了不可预知的错误' })
         
     } else {
-        
         response.call(res, { template, code: 200, data:  JSON.stringify(data)})
     }
 }

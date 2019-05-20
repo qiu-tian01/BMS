@@ -9,6 +9,9 @@ var indexRouter = require('./routes/index');//路由工具
 var bookRouter = require('./routes/books');
 var borrowRouter = require('./routes/borrows')
 var userRouter = require('./routes/user')
+var RemindRouter = require('./routes/remind')
+var CollectRouter = require('./routes/collect')
+var CommentRouter = require('./routes/comment')
 
 //主应用程序
 var app = express();
@@ -40,6 +43,9 @@ app.use('/', indexRouter);
 app.use('/api/books',bookRouter)
 app.use('/api/borrows',borrowRouter)
 app.use('/api/user',userRouter)
+app.use('/api/remind',RemindRouter)
+app.use('/api/collect',CollectRouter)
+app.use('/api/comment',CommentRouter)
 
 // catch 404 and forward to error handler
 // 处理404
@@ -60,3 +66,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+ 

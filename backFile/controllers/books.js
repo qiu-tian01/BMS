@@ -3,7 +3,7 @@ const book_model = require('../models/books')
 
 // 获取图书列表
 const listAll = async (req, res) => {
-    // res.set('content-type', 'application/json; charset=utf8')
+    res.set('content-type', 'application/json; charset=utf8')
     let _data = await book_model.listAll()
     handleData(_data, res, 'book')
 }
@@ -35,7 +35,6 @@ const listone = async (req, res) => {
 const edit = async (req, res) => {
     res.set('content-type', 'application/json; charset=utf8')
     let _data = await book_model.edit(req.body)
-    console.log("ok",req.body)
     handleData(_data, res, 'book')
 }
 module.exports = {
