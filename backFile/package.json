@@ -13,7 +13,7 @@
     "fs-extra": "^7.0.1",
     "http-errors": "~1.6.2",
     "moment": "^2.24.0",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.7.5",
     "morgan": "~1.9.0"
   }
 }
